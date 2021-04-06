@@ -1,5 +1,6 @@
 import datetime
 from plexapi.library import MovieSection, ShowSection, LibrarySection
+from plexapi.server import SystemDevice
 from plexapi.video import Movie, Show
 from plex_trakt_sync.decorators import memoize, nocache
 from plex_trakt_sync.config import CONFIG
@@ -155,6 +156,11 @@ class PlexApi:
             result.append(section)
 
         return result
+
+    @memoize
+    @nocache
+    def system_device(self, device_id: int) -> SystemDevice:
+        return self.plex.systemDevice(device_id)
 
     @nocache
     def rate(self, m, rating):
