@@ -3,7 +3,7 @@ from plexapi.library import MovieSection, ShowSection, LibrarySection
 from plexapi.server import SystemDevice
 from plexapi.video import Movie, Show
 from plex_trakt_sync.decorators import memoize, nocache
-from plex_trakt_sync.config import CONFIG
+from plex_trakt_sync.config import CONFIG, PLEX_PLATFORM
 
 
 class PlexLibraryItem:
@@ -165,6 +165,15 @@ class PlexApi:
     @nocache
     def rate(self, m, rating):
         m.rate(rating)
+
+    @nocache
+    def history(self, m):
+        for h in m.history():
+            # Ignore history entries created by us
+            device = self.system_device(h.deviceID)
+            if device.platform == PLEX_PLATFORM:
+                continue
+            yield h
 
     @nocache
     def mark_watched(self, m):
