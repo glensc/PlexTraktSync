@@ -130,7 +130,7 @@ via [Webhook][tautulli-webhook].
 [tautulli-notification-agents]: https://github.com/Tautulli/Tautulli/wiki/Notification-Agents-Guide
 [tautulli-webhook]: https://github.com/Tautulli/Tautulli/wiki/Notification-Agents-Guide#webhook
 
-For configuration use:
+For Tautulli side configuration, use:
 
 - Webhook URL: `http://localhost:7707` (or equivalent that Tautulli can reach)
 - Webhook Method: `PUT`
@@ -141,6 +141,12 @@ For configuration use:
 - Notification Text:
     - JSON Data: `{ "action": "watched", "rating_key": "{rating_key}" }`
     - JSON Data: `{ "action": "collected", "rating_key": "{rating_key}" }`
+
+To launch the HTTP server for Webhook:
+```bash
+$ ./plex_trakt_sync.sh webhook
+Serving at http://localhost:7707
+```
 
 To test webhook, create file `webhook.json`:
 ```json
