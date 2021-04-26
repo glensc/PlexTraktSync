@@ -143,10 +143,13 @@ For Tautulli side configuration, use:
     - JSON Data: `{ "action": "collected", "rating_key": "{rating_key}" }`
 
 To launch the HTTP server for Webhook:
+
 ```bash
 $ ./plex_trakt_sync.sh webhook
 Serving at http://localhost:7707
 ```
+
+Use `--help` argument to find options to override listen address.
 
 To test webhook, create file `webhook.json`:
 ```json
