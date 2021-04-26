@@ -122,6 +122,26 @@ and scrobble plays.
 $ ./plex_trakt_sync.sh watch
 ```
 
+## Tautulli Webhook
+
+You can have PlexTraktSync to receive events from [Tautulli Notification Agents][tautulli-notification-agents]
+via [Webhook][tautulli-webhook].
+
+[tautulli-notification-agents]: https://github.com/Tautulli/Tautulli/wiki/Notification-Agents-Guide
+[tautulli-webhook]: https://github.com/Tautulli/Tautulli/wiki/Notification-Agents-Guide#webhook
+
+For configuration use:
+
+- Webhook URL: `http://localhost:7707` (or equivalent that Tautulli can reach)
+- Webhook Method: `POST`
+- Description: `PlexTraktSync`
+- Notification Triggers:
+    - [x] Notification Triggers
+    - [x] Recently Added
+- Notification Text:
+    - JSON Data: `{ "action": "watched", "rating_key": "{rating_key}" }`
+    - JSON Data: `{ "action": "collected", "rating_key": "{rating_key}" }`
+
 ## Notes
 
  - The first execution of the script will (depending on your PMS library size)
