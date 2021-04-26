@@ -133,7 +133,7 @@ via [Webhook][tautulli-webhook].
 For configuration use:
 
 - Webhook URL: `http://localhost:7707` (or equivalent that Tautulli can reach)
-- Webhook Method: `POST`
+- Webhook Method: `PUT`
 - Description: `PlexTraktSync`
 - Notification Triggers:
     - [x] Notification Triggers
@@ -141,6 +141,16 @@ For configuration use:
 - Notification Text:
     - JSON Data: `{ "action": "watched", "rating_key": "{rating_key}" }`
     - JSON Data: `{ "action": "collected", "rating_key": "{rating_key}" }`
+
+To test webhook, create file `webhook.json`:
+```json
+{"action": "watched", "ratingKey": "10351"}
+```
+
+And use `curl` to test:
+```bash
+curl -i http://localhost:7707/ --upload-file webhook.json
+```
 
 ## Notes
 
