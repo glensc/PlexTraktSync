@@ -35,7 +35,7 @@ class WebhookHandler:
         logger.debug(f"RatingKey: {rating_key}")
         self.sync(action, rating_key)
 
-    def sync(self, action:str, rating_key: int):
+    def sync(self, action: str, rating_key: int):
         media = self.find_media(rating_key)
         logger.debug(f"Found: {media}")
 
