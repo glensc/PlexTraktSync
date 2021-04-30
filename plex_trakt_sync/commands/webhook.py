@@ -49,7 +49,8 @@ class WebhookHandler:
             return
 
         logger.debug(f"watched_on_plex: {m.watched_on_plex}")
-        logger.debug(f"plex.seen_date: {m.plex.seen_date}")
+        if m.watched_on_plex:
+            logger.debug(f"plex.seen_date: {m.plex.seen_date}")
 
     def sync_collection(self, m: Media):
         if not CONFIG['sync']['collection']:
