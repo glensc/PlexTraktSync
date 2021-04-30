@@ -16,8 +16,9 @@ TAUTULLI_WEBHOOK_URL = "https://github.com/Taxel/PlexTraktSync#tautulli-webhook"
 
 
 class WebhookHandler:
-    def __init__(self, plex: PlexApi, mf: MediaFactory):
+    def __init__(self, plex: PlexApi, trakt: TraktApi, mf: MediaFactory):
         self.plex = plex
+        self.trakt = trakt
         self.mf = mf
 
     def handle(self, payload):
@@ -115,7 +116,7 @@ def webhook(bind: str, port: int):
         mf = MediaFactory(server, trakt)
 
         httpd.allow_reuse_address = True
-        httpd.webhook = WebhookHandler(plex, mf)
+        httpd.webhook = WebhookHandler(plex, trakt, mf)
 
         try:
             click.echo(f"Serving at http://{bind}:{port}")
