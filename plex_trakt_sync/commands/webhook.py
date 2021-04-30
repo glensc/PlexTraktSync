@@ -49,6 +49,7 @@ class WebhookHandler:
         if not CONFIG['sync']['collection']:
             return
 
+        logger.debug(f"m.is_collected: {m.is_collected}")
         if m.is_collected:
             return
 
