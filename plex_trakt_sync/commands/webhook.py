@@ -36,6 +36,7 @@ class WebhookHandler:
         media = self.find_media(rating_key)
         logger.debug(f"Found: {media}")
         self.sync_watched(media)
+        self.sync_collection(media)
 
     def sync_watched(self, m: Media):
         if not CONFIG['sync']['watched_status']:
@@ -43,6 +44,17 @@ class WebhookHandler:
 
         logger.debug(f"watched_on_plex: {m.watched_on_plex}")
         logger.debug(f"plex.seen_date: {m.plex.seen_date}")
+
+    def sync_collection(self, m: Media):
+        if not CONFIG['sync']['collection']:
+            return
+
+        if m.is_collected:
+            return
+
+        logger.info(f"Add to collection: {m}")
+        m.add_to_collection()
+        self.trakt.flush()
 
     def find_media(self, rating_key: int):
         plex = self.plex.fetch_item(rating_key)
