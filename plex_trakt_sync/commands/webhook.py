@@ -26,17 +26,23 @@ class WebhookHandler:
         if "rating_key" not in payload:
             logger.debug(f"Skip, no ratingKey in payload")
             return
+        if "action" not in payload:
+            logger.debug(f"Skip, no action in payload")
+            return
 
+        action = payload["action"]
         rating_key = int(payload["rating_key"])
         logger.debug(f"RatingKey: {rating_key}")
-        if rating_key:
-            self.sync(rating_key)
+        self.sync(action, rating_key)
 
-    def sync(self, rating_key: int):
+    def sync(self, action:str, rating_key: int):
         media = self.find_media(rating_key)
         logger.debug(f"Found: {media}")
-        self.sync_watched(media)
-        self.sync_collection(media)
+
+        if action == "watched":
+            self.sync_watched(media)
+        if action == "collected":
+            self.sync_collection(media)
 
     def sync_watched(self, m: Media):
         if not CONFIG['sync']['watched_status']:
