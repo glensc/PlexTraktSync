@@ -52,7 +52,7 @@ class WebhookHandler:
         if m.watched_on_plex:
             logger.debug(f"plex.seen_date: {m.plex.seen_date}")
 
-        m.plex = self.plex.reload_item(m.plex.item.ratingKey)
+        m.plex = self.plex.reload_item(m.plex)
         logger.debug(f"watched_on_plex x2: {m.watched_on_plex}")
         if m.watched_on_plex:
             logger.debug(f"plex.seen_date x2: {m.plex.seen_date}")
