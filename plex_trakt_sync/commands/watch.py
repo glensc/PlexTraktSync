@@ -79,6 +79,35 @@ class WatchStateUpdater:
 
             yield item
 
+        """
+        {
+            'type': 'activity',
+            'size': 1,
+            'ActivityNotification': [
+                {
+                    'event': 'ended',
+                    'uuid': '86bb9c4a-1b54-45d7-8758-4c81d4cc1108',
+                    'Activity': {
+                        'uuid': '86bb9c4a-1b54-45d7-8758-4c81d4cc1108',
+                        'type': 'library.refresh.items',
+                        'cancellable': False,
+                        'userID': 1,
+                        'title': 'Refreshing',
+                        'subtitle': 'Augmenting metadata',
+                        'progress': 100,
+                        'Context': {
+                            'accessible': True,
+                            'analyzed': False,
+                            'exists': True,
+                            'key': '/library/metadata/10551',
+                            'refreshed': False
+                        }
+                    }
+                }
+            ]
+        }
+        """
+
 
 @click.command()
 def watch():
