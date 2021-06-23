@@ -5,6 +5,18 @@ from plex_trakt_sync.logging import logging
 
 PLAYING = "playing"
 
+EVENTS = {
+    "account": "AccountUpdateNotification",
+    "activity": "ActivityNotification",
+    "backgroundProcessingQueue": "BackgroundProcessingQueueEventNotification",
+    "playing": "PlaySessionStateNotification",
+    "preference": "Setting",
+    "progress": "ProgressNotification",
+    "reachability": "ReachabilityNotification",
+    "status": "StatusNotification",
+    "timeline": "TimelineEntry",
+}
+
 
 class WebSocketListener:
     def __init__(self, plex: PlexServer, interval=1):
