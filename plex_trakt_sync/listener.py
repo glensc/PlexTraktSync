@@ -90,6 +90,7 @@ class WebSocketListener:
         self.plex = plex
         self.interval = interval
         self.event_handlers = {}
+        self.event_factory = EventFactory()
         self.logger = logging.getLogger("PlexTraktSync.WebSocketListener")
 
     def on(self, event_name, handler):
@@ -101,6 +102,10 @@ class WebSocketListener:
     def listen(self):
         def handler(data):
             self.logger.debug(data)
+            events = self.event_factory.get_events(data)
+            for event in events:
+                print(event)
+
             event_type = data['type']
             if event_type not in self.event_handlers:
                 return
