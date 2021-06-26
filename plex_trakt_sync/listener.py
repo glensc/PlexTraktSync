@@ -1,9 +1,52 @@
+import importlib
 from time import sleep
+
 from plexapi.server import PlexServer
 
 from plex_trakt_sync.logging import logging
 
 PLAYING = "playing"
+
+
+class Event(dict):
+    pass
+
+
+class AccountUpdateNotification(Event):
+    pass
+
+
+class ActivityNotification(Event):
+    pass
+
+
+class BackgroundProcessingQueueEventNotification(Event):
+    pass
+
+
+class PlaySessionStateNotification(Event):
+    pass
+
+
+class Setting(Event):
+    pass
+
+
+class ProgressNotification(Event):
+    pass
+
+
+class ReachabilityNotification(Event):
+    pass
+
+
+class StatusNotification(Event):
+    pass
+
+
+class TimelineEntry(Event):
+    pass
+
 
 EVENTS = {
     "account": "AccountUpdateNotification",
@@ -19,6 +62,9 @@ EVENTS = {
 
 
 class EventFactory:
+    def __init__(self):
+        self.module = importlib.import_module(self.__module__)
+
     def get_events(self, message):
         if message["size"] != 1:
             raise ValueError("Unexpected size: %r" % message)
@@ -34,8 +80,8 @@ class EventFactory:
             yield event
 
     def create(self, cls, **kwargs):
-        # https://stackoverflow.com/a/2827726/2314626
-        return type(cls, (object,), kwargs)
+        cls = getattr(self.module, cls)
+        return cls(**kwargs)
 
 
 class WebSocketListener:
