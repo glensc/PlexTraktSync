@@ -94,7 +94,7 @@ class HttpCacheConfig:
         # reloads
         "*/library/metadata/*?*include*": "1h",
         # find_by_id
-        "*/library/metadata/*": DO_NOT_CACHE,
+        "*/library/metadata/*": "1m",
         # mark played, mark unplayed
         "*/:/scrobble?key=*&identifier=com.plexapp.plugins.library": DO_NOT_CACHE,
         "*/:/unscrobble?key=&&identifier=com.plexapp.plugins.library": DO_NOT_CACHE,
