@@ -76,11 +76,11 @@ class HttpCacheConfig:
         "plex.tv/api/v2/user": "15m",
         # Plex patterns
         # Ratings search
-        "*/library/sections/*/all?*userRating*=-1*": "15m",
+        "*/library/sections/*/all?*userRating*=-1*": "5m",
         # len(PlexLibrarySection)
-        "*/library/sections/*/all?*X-Plex-Container-Size=0": "10m",
+        "*/library/sections/*/all?*X-Plex-Container-Size=0": "5m",
         # __iter__(PlexLibrarySection)
-        "*/library/sections/*/all?includeGuids=1": "50m",
+        "*/library/sections/*/all?includeGuids=1": "5m",
         # find_by_title
         "*/library/sections/*/all?includeGuids=1&title=*": "5m",
         # episodes
