@@ -1,4 +1,3 @@
-from functools import cached_property
 from os import getenv
 from os.path import exists
 
@@ -86,7 +85,7 @@ class Config(ChangeNotifier, ConfigMergeMixin, dict):
 
         return HttpCacheConfig(**cache)
 
-    @cached_property
+    @property
     def ignore_ids(self):
         values = self["ignore_ids"] if "ignore_ids" in self and self["ignore_ids"] else None
 
