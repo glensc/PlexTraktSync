@@ -88,9 +88,9 @@ class Config(ChangeNotifier, ConfigMergeMixin, dict):
 
     @cached_property
     def ignore_ids(self):
-        value = self["ignore_ids"] if "ignore_ids" in self and self["ignore_ids"] else None
+        values = self["ignore_ids"] if "ignore_ids" in self and self["ignore_ids"] else None
 
-        return set(value if value is not None else [])
+        return set(values or [])
 
     def initialize(self):
         """
