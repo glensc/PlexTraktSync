@@ -12,11 +12,10 @@ class PlexGuidProviderYoutube:
 
     @property
     def link(self):
-        if self.guid.type == "artist":
-            return f"https://musicbrainz.org/artist/{self.guid.id}"
-        if self.guid.type == "album":
-            return f"https://musicbrainz.org/release/{self.guid.id}"
+        return None
 
     @property
     def title(self):
-        return f"{self.guid.provider}:{self.guid.type}:{self.guid.id}"
+        id = self.guid.id
+        id = ""
+        return f"{self.guid.provider}:{self.guid.type}:{id}"
