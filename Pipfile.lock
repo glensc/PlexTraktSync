@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1e46b0572f1ddb874a3ab4d91171b2ac28c992f28cc93070c66eecf89d13be88"
+            "sha256": "9c930ff3afbc85ebf9f5f7b09fbf35999a84f0c3a3f730c8a7d2f7ff161e2263"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -307,10 +307,10 @@
         },
         "niquests": {
             "hashes": [
-                "sha256:1cf55b42ba5554775a3fa2e1f3f79ae0414d94e8c7f098073332983d28a0dfad",
-                "sha256:948df009a55da59d532d07b69dc46902796033e43cd2d2d683474e7aa086ad0e"
+                "sha256:43ce8543193eb5a02a7a18809111ec49efcc7651db931f2f5aabdd30385304f4",
+                "sha256:fe31f89add6024c1c9a00de5117faface885d4150bd2e40b386ee0b502b1e703"
             ],
-            "version": "==3.10.0"
+            "version": "==3.10.1"
         },
         "oauthlib": {
             "hashes": [
